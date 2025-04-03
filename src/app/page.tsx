@@ -79,8 +79,8 @@ export default function HomePage() {
           <ul className='space-y-4 text-lg'>
             {[
               'Rapidly answer audit questions using your documents',
-              'Find documentation gaps before the auditor does',
-              'Connects to Google Drive, SharePoint & more',
+              'Quickly find documentation gaps before an audit',
+              'Connects to Google Drive, SharePoint & Document Management Systems',
               'Built for small regulatory teams with big audit burdens',
               'Data privacy built in—your documents stay yours',
             ].map((item, idx) => (
