@@ -1,7 +1,8 @@
 'use client';
 
 import { LinkedInLogoIcon } from '@radix-ui/react-icons';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
+import Image from 'next/image';
 
 export default function HomePage() {
   const formRef = useRef<HTMLDivElement>(null);
@@ -10,11 +11,45 @@ export default function HomePage() {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const [formData, setFormData] = useState({ email: '', company: '' });
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setFormData({ email: '', company: '' });
+      } else {
+        alert('Something went wrong.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to submit.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className='min-h-screen flex flex-col text-white bg-gray-800'>
       {/* Header */}
-      <header className='flex justify-between items-center px-6 lg:px-16 py-4 bg-gray-800'>
-        <div className='text-xl font-bold'>Ai.Dit</div>
+      <header className='flex justify-between items-center px-6 lg:px-16 py-2 bg-gray-800'>
+        <Image
+          src='/AiDit-logo-v1.jpg'
+          alt='AiDit Logo'
+          width={220} // Adjust size as needed
+          height={80}
+        />
         <button
           onClick={scrollToForm}
           className='bg-orange-600 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg'
@@ -27,7 +62,7 @@ export default function HomePage() {
       <section
         className='flex flex-col lg:flex-row px-6 lg:px-16 py-20 gap-10 lg:gap-20 items-center justify-between bg-gray-500 relative overflow-hidden'
         // style={{
-        //   backgroundImage: "url('/images/tech-pattern.jpg')",
+        //   backgroundImage: "url('/tech-pattern.jpg')",
         //   backgroundRepeat: 'repeat',
         //   backgroundSize: 'cover',
         //   backgroundPosition: 'center',
@@ -69,26 +104,43 @@ export default function HomePage() {
           <h2 className='text-3xl font-bold mb-6'>
             Get Early Access & Book a Demo
           </h2>
-          <form className='space-y-6'>
-            <input
-              type='email'
-              placeholder='Work Email'
-              className='w-full px-4 py-3 rounded-md text-black'
-              required
-            />
-            <input
-              type='text'
-              placeholder='Company Name'
-              className='w-full px-4 py-3 rounded-md text-black'
-              required
-            />
-            <button
-              type='submit'
-              className='w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg'
-            >
-              Book Demo
-            </button>
-          </form>
+          {submitted ? (
+            <p className='text-green-400 text-xl'>
+              Thanks! We&apos;ll be in touch soon.
+            </p>
+          ) : (
+            <form onSubmit={handleSubmit} className='space-y-6'>
+              <input
+                type='email'
+                name='email'
+                placeholder='Work Email'
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className='w-full px-4 py-3 rounded-md text-black'
+                required
+              />
+              <input
+                type='text'
+                name='company'
+                placeholder='Company Name'
+                value={formData.company}
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
+                className='w-full px-4 py-3 rounded-md text-black'
+                required
+              />
+              <button
+                type='submit'
+                className='w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg'
+                disabled={loading}
+              >
+                {loading ? 'Sending...' : 'Book Demo'}
+              </button>
+            </form>
+          )}
         </div>
       </section>
 
