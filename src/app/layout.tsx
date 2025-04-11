@@ -10,8 +10,36 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Ai.Dit',
-  description: 'A.I Audit Assistant',
+  title: 'Ai.Dit | AI Integrated Data Intelligence Tool',
+  description: 'AI Integrated Data Intelligence Tool',
+  keywords: [
+    'AI Audit',
+    'AI Audit Tool',
+    'AI Audit Assistant',
+    'AI Audit Automation',
+    'AI Audit Report',
+  ],
+  icons: {
+    icon: '/aidit-favicon.svg',
+  },
+  authors: [{ name: 'Sandeep Chandran, Vishwas Sharma' }],
+  publisher: 'Sandeep Chandran',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
