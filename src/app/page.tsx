@@ -73,16 +73,20 @@ export default function HomePage() {
 
         {/* Content */}
         <div className='relative z-10 max-w-2xl'>
-          <h1 className='text-4xl md:text-5xl font-extrabold mb-6 leading-tight'>
-            AI-Powered Audit Assistant for Medical Device Manufacturers
+          <h1 className='text-4xl font-extrabold mb-6 leading-tight'>
+            AI Integrated Data Intelligence Tool
           </h1>
+          <p className='text-lg font-semibold mb-6 leading-tight'>
+            A.I Driven platform that offers complete Audit solutions, with focus
+            on automation, analysis, and data privacy.
+          </p>
           <ul className='space-y-4 text-lg'>
             {[
-              'Rapidly answer audit questions using your documents',
-              'Quickly find documentation gaps before an audit',
-              'Connects to Google Drive, SharePoint & Document Management Systems',
-              'Built for small regulatory teams with big audit burdens',
-              'Data privacy built in—your documents stay yours',
+              'Rapidly find relevant data and generate responses to external audits.',
+              'Quickly identify nonconformities in external audits.',
+              'Automate Supplier and Internal Audits by auto generating Audit questions.',
+              'Analytics of organization data to continuously monitor nonconformities.',
+              'Entire platform always secured with data privacy.',
             ].map((item, idx) => (
               <li key={idx} className='flex items-start gap-2'>
                 <span className='text-green-400 mt-1'>✔</span>
@@ -100,10 +104,13 @@ export default function HomePage() {
 
       {/* Form Section */}
       <section ref={formRef} className='bg-gray-800 px-6 lg:px-16 py-16'>
-        <div className='max-w-2xl mx-auto text-center'>
-          <h2 className='text-3xl font-bold mb-6'>
-            Get Early Access & Book a Demo
+        <div className='max-w-3xl mx-auto text-center'>
+          <h2 className='text-3xl font-bold mb-3'>
+            Your <span className='font-medium italic'>Audits Simplified!</span>
           </h2>
+          <p className='text-2xl font-bold mb-6'>
+            Get Early Access & Book a Demo
+          </p>
           {submitted ? (
             <p className='text-green-400 text-xl'>
               Thanks! We&apos;ll be in touch soon.
