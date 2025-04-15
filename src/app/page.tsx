@@ -142,7 +142,7 @@ export default function HomePage() {
               <button
                 type='submit'
                 className='w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg disabled:bg-gray-300 disabled:text-gray-500'
-                disabled={!loading}
+                disabled={loading}
               >
                 {loading ? 'Sending...' : 'Book Demo'}
               </button>
