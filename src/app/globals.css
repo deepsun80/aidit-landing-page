@@ -24,3 +24,8 @@ body {
 pre {
   font-family: var(--font-roboto), sans-serif;
 }
+
+#main-header.scrolled img.shrink-on-scroll {
+  width: 140px !important;
+  height: auto;
+}
