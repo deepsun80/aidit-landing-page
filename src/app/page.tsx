@@ -195,7 +195,7 @@ export default function HomePage() {
               },
               {
                 icon: '/icon-1-dk-quality.png',
-                title: 'Reduce Nonconformities by 40% with Smart Oversight',
+                title: 'Reduce Nonconformities by 60% with Smart Oversight',
                 bullets: [
                   'Leverage our HITL-enhanced AI to ensure consistent, high-quality audit responses.',
                   'Catch issues early through continuous data validation and document quality checks.',
@@ -203,7 +203,7 @@ export default function HomePage() {
               },
               {
                 icon: '/icon-1-dk-cost.png',
-                title: 'Lower Compliance Costs by 25% Through Automation',
+                title: 'Lower Compliance Costs by 60% Through Automation',
                 bullets: [
                   'Replace costly manual processes with intelligent workflows.',
                   'Avoid unnecessary expenses by catching documentation gaps early.',
@@ -212,7 +212,7 @@ export default function HomePage() {
               {
                 icon: '/icon-1-dk-efficiency.png',
                 title:
-                  'Boost Compliance Efficiency by 55% Across Critical Pipelines',
+                  'Boost Compliance Efficiency by 70% Across Critical Pipelines',
                 bullets: [
                   'Get ahead of issues with real-time alerts and AI-powered nonconformity detection.',
                   'Benefit from evolving AI that adapts to your workflow logic and regulatory standards.',
@@ -232,6 +232,7 @@ export default function HomePage() {
                     height={90}
                   />
                   <h3 className='text-lg font-bold'>{item.title}</h3>
+                  <sup className='ml-1 text-xs text-gray-500'>[{idx + 1}]</sup>
                 </div>
                 <ul className='list-disc list-inside text-sm pl-2'>
                   {item.bullets.map((point, i) => (
@@ -242,6 +243,69 @@ export default function HomePage() {
                 </ul>
               </div>
             ))}
+            <div className='mt-12 text-xs text-gray-200'>
+              <p className='mb-1 font-semibold'>Sources:</p>
+              <ol className='list-decimal list-inside space-y-1'>
+                <li>
+                  Number Analytics – “AI Compliance Monitoring Impact Report”
+                  (2023).{' '}
+                  <a
+                    href='https://www.numberanalytics.com/blog/ai-compliance-monitoring-firms'
+                    className='underline text-gray-300'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    View report
+                  </a>
+                </li>
+                <li>
+                  Hyperproof – “Compliance Automation Survey” (2023).{' '}
+                  <a
+                    href='https://hyperproof.io/resource/compliance-automation/'
+                    className='underline text-gray-300'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    Read more
+                  </a>
+                </li>
+                <li>
+                  ResearchGate – “AI-Driven Compliance Audits for Enhanced
+                  Efficiency” (2024).{' '}
+                  <a
+                    href='https://www.researchgate.net/publication/378490586_Augmenting_the_Watchdog_AI_-Driven_Compliance_Audits_for_Enhanced_Efficiency_and_Accuracy'
+                    className='underline text-gray-300'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    View study
+                  </a>
+                </li>
+                <li>
+                  Concur – “Improving Expense Report Audits with AI” (2023).{' '}
+                  <a
+                    href='https://www.concur.com/blog/article/people-ai-automation-how-to-improve-expense-report-audit'
+                    className='underline text-gray-300'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    Visit source
+                  </a>
+                </li>
+                <li>
+                  ResearchGate – “AI-Driven Compliance Audits for Enhanced
+                  Efficiency” (2024).{' '}
+                  <a
+                    href='https://www.researchgate.net/publication/378490586_Augmenting_the_Watchdog_AI_-Driven_Compliance_Audits_for_Enhanced_Efficiency_and_Accuracy'
+                    className='underline text-gray-300'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    View study
+                  </a>
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
       </section>
