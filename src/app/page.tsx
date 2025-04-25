@@ -247,6 +247,18 @@ export default function HomePage() {
               <p className='mb-1 font-semibold'>Sources:</p>
               <ol className='list-decimal list-inside space-y-1'>
                 <li>
+                  Harvard Business Review – “How to Maximize AI ROI webinar”
+                  (2025).{' '}
+                  <a
+                    href='https://www.nice.com/lps/rpcs-hbr?utm_campaign=NL_Q225_EN_PLT_GLOB_250831_ODW_RPCS-HBR-ROI-AI-Process-MGMT&utm_source=meta&utm_medium=cpc&utm_content=0367529&utm_detail=dentsu-lal-glob&fbclid=IwZXh0bgNhZW0BMABhZGlkAaseYJpYvPgBHoifKFClrtOod1xpsUY6wh3gGRErtORzRwJonLmZ4Nxmj3BdNLw5frqXwF7r_aem_5OpWPhdCE-Eg3O13obiZGw&utm_id=120215616744490616&utm_term=120223214891220616'
+                    className='underline text-gray-300'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    View summary
+                  </a>
+                </li>
+                <li>
                   Number Analytics – “AI Compliance Monitoring Impact Report”
                   (2023).{' '}
                   <a
