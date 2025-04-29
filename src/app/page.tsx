@@ -117,7 +117,7 @@ export default function HomePage() {
           <ul className='space-y-5 text-lg'>
             {[
               {
-                title: 'Answer External Audits Instantly',
+                title: 'Answer Customer and Agency Audits Instantly',
                 description:
                   'Quickly locate relevant documentation and generate compliant responses.',
               },
@@ -129,12 +129,12 @@ export default function HomePage() {
               {
                 title: 'Automate Supplier & Internal Audits',
                 description:
-                  'Generate tailored audit questions based on training documents and standards.',
+                  'Generate tailored audit questions based on quality system requirements and standards.',
               },
               {
                 title: 'Monitor Risk Through Continuous Analytics',
                 description:
-                  'Gain organization-wide insight into documentation health and audit readiness.',
+                  'Gain organization-wide insight into quality system health and audit readiness.',
               },
             ].map((item, idx) => (
               <li key={idx} className='flex items-start gap-3'>
