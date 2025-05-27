@@ -84,7 +84,7 @@ export default function HomePage() {
       {/* Header */}
       <header
         id='main-header'
-        className='sticky top-0 z-50 flex justify-between items-center px-6 lg:px-16 py-2 bg-gray-800 shadow-md transition-all duration-300'
+        className='absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 lg:px-16 py-4 transition-all duration-300 bg-transparent'
       >
         <Image
           src='/AiDit-logo-v1.jpg'
@@ -95,15 +95,24 @@ export default function HomePage() {
         />
         <button
           onClick={scrollToForm}
-          className='bg-orange-600 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg'
+          className='bg-orange-600 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded-sm'
         >
           Book Demo
         </button>
       </header>
 
       {/* Top Section */}
-      <section className='flex flex-col lg:flex-row px-6 lg:px-16 py-20 gap-6 lg:gap-[10rem] items-center justify-center bg-gray-500 relative overflow-hidden'>
-        <div className='absolute inset-0 bg-gray-500 bg-opacity-80 z-0' />
+      <section className='pt-64 flex flex-col lg:flex-row px-6 lg:px-16 py-48 gap-6 lg:gap-[10rem] items-center justify-center relative overflow-hidden'>
+        <div
+          className='absolute inset-0 z-0 bg-cover bg-no-repeat bg-center filter blur-[3px] scale-100'
+          style={{
+            backgroundImage: "url('/aidit-bg.png')",
+            // backgroundImage: "url('/tech-pattern.jpg')",
+            backgroundPosition: 'top center',
+          }}
+        />
+
+        <div className='absolute inset-0 bg-blue-900 bg-opacity-80 z-0' />
 
         {/* Content */}
         <div className='relative z-10 max-w-2xl'>
@@ -170,7 +179,7 @@ export default function HomePage() {
       </section>
 
       {/* Value Props Section */}
-      <section className='bg-gray-800 px-6 lg:px-16 py-10'>
+      <section className='bg-gray-800 px-6 lg:px-16 py-10 border-t border-gray-500'>
         <div className='max-w-6xl mx-auto'>
           <h2 className='text-3xl font-bold text-white mb-10 text-center'>
             How Ai.Dit Can Help Your Organization
@@ -323,14 +332,25 @@ export default function HomePage() {
       </section>
 
       {/* Form Section */}
-      <section ref={formRef} className='bg-gray-600 px-6 lg:px-16 pt-10 pb-20'>
-        <div className='max-w-3xl mx-auto text-center'>
+      <section ref={formRef} className='relative overflow-hidden'>
+        {/* Blurred Background Image */}
+        <div
+          className='absolute inset-0 bg-cover bg-center filter blur-[3px] scale-105 z-0'
+          style={{ backgroundImage: "url('/tech-pattern.jpg')" }}
+        />
+
+        {/* Blue overlay */}
+        <div className='absolute inset-0 bg-blue-900 bg-opacity-70 z-10' />
+
+        {/* Form Content */}
+        <div className='relative z-20 px-6 lg:px-16 pt-16 pb-24 max-w-3xl mx-auto text-center'>
           <h2 className='text-3xl font-bold mb-3'>
             Your <span className='font-medium italic'>Audits Simplified!</span>
           </h2>
           <p className='text-2xl font-bold mb-6'>
             Get Early Access & Book a Demo
           </p>
+
           {submitted ? (
             <p className='text-green-400 text-xl'>
               Thanks! We&apos;ll be in touch soon.
@@ -345,7 +365,7 @@ export default function HomePage() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className='w-full px-4 py-3 rounded-md text-black'
+                className='w-full px-4 py-3 rounded-sm text-black'
                 required
               />
               <input
@@ -356,12 +376,12 @@ export default function HomePage() {
                 onChange={(e) =>
                   setFormData({ ...formData, company: e.target.value })
                 }
-                className='w-full px-4 py-3 rounded-md text-black'
+                className='w-full px-4 py-3 rounded-sm text-black'
                 required
               />
               <button
                 type='submit'
-                className='w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg disabled:bg-gray-300 disabled:text-gray-500'
+                className='w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-6 rounded-sm disabled:bg-gray-300 disabled:text-gray-500'
                 disabled={loading}
               >
                 {loading ? 'Sending...' : 'Book Demo'}
@@ -379,7 +399,7 @@ export default function HomePage() {
           </p>
           <div className='flex gap-4 text-gray-400'>
             <a
-              href='#'
+              href='https://www.linkedin.com/company/ai-dit'
               target='_blank'
               aria-label='LinkedIn'
               rel='noopener noreferrer'
