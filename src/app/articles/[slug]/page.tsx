@@ -2,24 +2,18 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { getArticleBySlug } from '../../../../lib/getArticles.server';
 import { format } from 'date-fns';
+import { notFound } from 'next/navigation';
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function ArticlePage({ params }: Props) {
   const article = await getArticleBySlug(params.slug);
 
-  if (!article)
-    return (
-      <>
-        <Header />
-        <main className='min-h-screen bg-white text-gray-800 px-6 lg:px-16 pt-[180px] pb-20'>
-          Article not found.
-        </main>
-        <Footer />
-      </>
-    );
+  if (!article) return notFound();
 
   return (
     <>
