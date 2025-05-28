@@ -4,14 +4,14 @@ import { getArticleBySlug } from '../../../../lib/getArticles.server';
 import { format } from 'date-fns';
 import { notFound } from 'next/navigation';
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
+interface PageProps {
+  params: Promise<Record<string, string>>;
+}
 
-export default async function ArticlePage({ params }: Props) {
-  const article = await getArticleBySlug(params.slug);
+export default async function ArticlePage({ params }: PageProps) {
+  const { slug } = await params;
+
+  const article = await getArticleBySlug(slug);
 
   if (!article) return notFound();
 
