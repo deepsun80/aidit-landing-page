@@ -12,10 +12,10 @@ interface PageProps {
 // Generate SEO metadata dynamically per article
 export async function generateMetadata({
   params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const article = await getArticleBySlug(params.slug);
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return {
