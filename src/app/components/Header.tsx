@@ -1,12 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+
 type HeaderProps = {
   scrollToForm?: () => void;
 };
 
 export default function Header({ scrollToForm }: HeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header
       id='main-header'
@@ -16,6 +21,7 @@ export default function Header({ scrollToForm }: HeaderProps) {
           : 'bg-transparent'
       }`}
     >
+      {/* Logo */}
       <Image
         src='/AiDit-logo-v1.jpg'
         alt='AiDit Logo'
@@ -24,7 +30,8 @@ export default function Header({ scrollToForm }: HeaderProps) {
         className='transition-all duration-300 ease-in-out lg:sticky-logo shrink-on-scroll'
       />
 
-      <div className='flex items-center gap-6'>
+      {/* Desktop Nav */}
+      <div className='hidden md:flex items-center gap-6'>
         {!scrollToForm && (
           <Link
             href='/'
@@ -46,6 +53,46 @@ export default function Header({ scrollToForm }: HeaderProps) {
           >
             Book Demo
           </button>
+        )}
+      </div>
+
+      {/* Mobile Nav */}
+      <div className='md:hidden flex items-center gap-4'>
+        {/* Hamburger */}
+        <button onClick={() => setMenuOpen(!menuOpen)} aria-label='Toggle Menu'>
+          <HamburgerMenuIcon className='w-6 h-6 text-white' />
+        </button>
+
+        {/* Book Demo (always visible) */}
+        {scrollToForm && (
+          <button
+            onClick={scrollToForm}
+            className='bg-orange-600 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded-sm text-sm'
+          >
+            Book Demo
+          </button>
+        )}
+
+        {/* Dropdown Menu */}
+        {menuOpen && (
+          <div className='absolute right-4 top-20 bg-gray-800 border border-gray-600 rounded-md shadow-lg w-40 py-2 z-50'>
+            {!scrollToForm && (
+              <Link
+                href='/'
+                className='block px-4 py-2 text-white hover:bg-gray-800'
+                onClick={() => setMenuOpen(false)}
+              >
+                Home
+              </Link>
+            )}
+            <Link
+              href='/articles'
+              className='block px-4 py-2 text-white hover:bg-gray-800'
+              onClick={() => setMenuOpen(false)}
+            >
+              Articles
+            </Link>
+          </div>
         )}
       </div>
     </header>

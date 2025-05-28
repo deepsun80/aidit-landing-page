@@ -3,9 +3,41 @@ import Footer from '../../components/Footer';
 import { getArticleBySlug } from '../../../../lib/getArticles.server';
 import { format } from 'date-fns';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 interface PageProps {
   params: Promise<Record<string, string>>;
+}
+
+// Generate SEO metadata dynamically per article
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const article = await getArticleBySlug(params.slug);
+
+  if (!article) {
+    return {
+      title: 'Article Not Found | Ai.Dit',
+      description: 'Sorry, we could not find this article.',
+    };
+  }
+
+  return {
+    title: `${article.title} | Ai.Dit`,
+    description: article.summary,
+    openGraph: {
+      title: `${article.title} | Ai.Dit`,
+      description: article.summary,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: `${article.title} | Ai.Dit`,
+      description: article.summary,
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: PageProps) {
