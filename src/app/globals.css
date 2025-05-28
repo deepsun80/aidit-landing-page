@@ -36,3 +36,8 @@ pre {
   border-bottom: 1px solid rgb(107 114 128);
   position: fixed;
 }
+
+#article a {
+  color: #f97316; /* Tailwind's orange-500 */
+  text-decoration: underline;
+}
