@@ -2,6 +2,7 @@
 title: Medical Device Internal Auditing - Ensuring Compliance and Quality
 summary: Internal auditing is a critical component in the medical device industry, ensuring that companies comply with regulatory standards and maintain high-quality products. This process involves systematic examination of various aspects of the company's operations, from design and manufacturing to distribution and post-market surveillance.
 slug: internal-auditing
+date: May 28, 2025
 ---
 
 **Introduction**

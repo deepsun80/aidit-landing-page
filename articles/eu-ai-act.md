@@ -2,6 +2,7 @@
 title: EU Artificial Intelligence Act (AIA) and its impact on manufacturers
 summary: The European Union has established comprehensive regulations for the use of artificial intelligence (AI) in medical devices through the Artificial Intelligence Act (AIA). This Act aims to promote the development and use of "human-centric and trustworthy" AI in medical devices and in vitro diagnostic devices (IVDs).
 slug: eu-ai-act
+date: May 28, 2025
 ---
 
 The European Union has established comprehensive regulations for the use of artificial intelligence (AI) in medical devices through the **Artificial Intelligence Act (AIA)** [\[1\]](https://www.raps.org/news-and-articles/news-articles/2024/7/eu-publishes-regulation-governing-use-of-ai-in-med) [\[2\]](https://www.hunton.com/insights/legal/the-impact-of-the-eu-ai-act-on-the-development-and-use-of-medical-devices). This Act aims to promote the development and use of "human-centric and trustworthy" AI in medical devices and in vitro diagnostic devices (IVDs) [\[1\]](https://www.raps.org/news-and-articles/news-articles/2024/7/eu-publishes-regulation-governing-use-of-ai-in-med).

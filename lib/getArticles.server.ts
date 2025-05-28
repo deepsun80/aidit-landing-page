@@ -42,7 +42,6 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  const stats = fs.statSync(fullPath);
 
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
@@ -51,7 +50,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     title: data.title,
     summary: data.summary,
     slug: data.slug,
-    date: stats.birthtime.toISOString(),
+    date: data.date,
     contentHtml,
   };
 }
