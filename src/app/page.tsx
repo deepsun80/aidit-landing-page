@@ -89,13 +89,13 @@ export default function HomePage() {
         <Image
           src='/AiDit-logo-v1.jpg'
           alt='AiDit Logo'
-          width={220}
+          width={200}
           height={70}
           className='transition-all duration-300 ease-in-out lg:sticky-logo shrink-on-scroll'
         />
         <button
           onClick={scrollToForm}
-          className='bg-orange-600 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded-sm'
+          className='bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-8 rounded-sm'
         >
           Book Demo
         </button>
@@ -104,10 +104,11 @@ export default function HomePage() {
       {/* Top Section */}
       <section className='pt-64 flex flex-col lg:flex-row px-6 lg:px-16 py-48 gap-6 lg:gap-[10rem] items-center justify-center relative overflow-hidden'>
         <div
-          className='absolute inset-0 z-0 bg-cover bg-no-repeat bg-center filter blur-[3px] scale-100'
+          className='absolute inset-0 z-0 bg-cover bg-no-repeat bg-center filter blur-[2px] scale-100'
           style={{
-            backgroundImage: "url('/aidit-bg.png')",
+            // backgroundImage: "url('/aidit-bg.png')",
             // backgroundImage: "url('/tech-pattern.jpg')",
+            backgroundImage: "url('/ai-bg.jpg')",
             backgroundPosition: 'top center',
           }}
         />
@@ -340,7 +341,7 @@ export default function HomePage() {
         />
 
         {/* Blue overlay */}
-        <div className='absolute inset-0 bg-blue-900 bg-opacity-70 z-10' />
+        <div className='absolute inset-0 bg-blue-700 bg-opacity-70 z-10' />
 
         {/* Form Content */}
         <div className='relative z-20 px-6 lg:px-16 pt-16 pb-24 max-w-3xl mx-auto text-center'>
