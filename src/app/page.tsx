@@ -44,7 +44,13 @@ export default function HomePage() {
   const scrollToForm = () =>
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
 
-  const [formData, setFormData] = useState({ email: '', company: '' });
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+  });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [index, setIndex] = useState(0);
@@ -69,7 +75,13 @@ export default function HomePage() {
 
       if (res.ok) {
         setSubmitted(true);
-        setFormData({ email: '', company: '' });
+        setFormData({
+          firstName: '',
+          lastName: '',
+          phone: '',
+          email: '',
+          company: '',
+        });
       } else {
         alert('Something went wrong.');
       }
@@ -79,6 +91,19 @@ export default function HomePage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const formatPhoneNumber = (value: string) => {
+    const phone = value.replace(/\D/g, '').slice(0, 10); // Remove non-digits
+    const match = phone.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+
+    if (!match) return value;
+
+    let result = '';
+    if (match[1]) result += `(${match[1]}`;
+    if (match[2]) result += `) ${match[2]}`;
+    if (match[3]) result += `-${match[3]}`;
+    return result;
   };
 
   return (
@@ -104,6 +129,7 @@ export default function HomePage() {
           <h1 className='text-4xl font-extrabold mb-6 leading-tight'>
             AI Integrated Data Intelligence Tool
           </h1>
+          <div className='w-24 h-px bg-gray-300 mb-6' />
           <p className='text-lg font-semibold mb-6 leading-tight text-gray-200'>
             An AI-driven platform for audit automation, analysis, and compliance
             intelligence, with data privacy at its core.
@@ -166,9 +192,10 @@ export default function HomePage() {
       {/* Value Props Section */}
       <section className='bg-gray-800 px-6 lg:px-16 py-10 border-t border-b border-gray-500'>
         <div className='max-w-6xl mx-auto'>
-          <h2 className='text-3xl font-bold text-white mb-10 text-center'>
+          <h2 className='text-3xl font-bold text-white mb-6 text-center'>
             How Ai.Dit Can Help Your Organization
           </h2>
+          <div className='w-24 h-px bg-gray-300 mx-auto mb-6' />
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
             {[
               {
@@ -329,13 +356,10 @@ export default function HomePage() {
 
         {/* Form Content */}
         <div className='relative z-20 px-6 lg:px-16 pt-16 pb-24 max-w-3xl mx-auto text-center'>
-          <h2 className='text-3xl font-bold mb-3'>
-            Your <span className='font-medium italic'>Audits Simplified!</span>
-          </h2>
-          <p className='text-2xl font-bold mb-6'>
-            Get Early Access & Book a Demo
+          <p className='text-3xl font-bold mb-6'>
+            Book a Demo & Get Early Access
           </p>
-
+          <div className='w-24 h-px bg-gray-300 mx-auto mb-6' />
           {submitted ? (
             <p className='text-green-400 text-xl'>
               Thanks! We&apos;ll be in touch soon.
@@ -343,9 +367,44 @@ export default function HomePage() {
           ) : (
             <form onSubmit={handleSubmit} className='space-y-6'>
               <input
+                type='firstName'
+                name='firstName'
+                placeholder='First Name'
+                value={formData.firstName}
+                onChange={(e) =>
+                  setFormData({ ...formData, firstName: e.target.value })
+                }
+                className='w-full px-4 py-3 rounded-sm text-black'
+                required
+              />
+              <input
+                type='lastName'
+                name='lastName'
+                placeholder='Last Name'
+                value={formData.lastName}
+                onChange={(e) =>
+                  setFormData({ ...formData, lastName: e.target.value })
+                }
+                className='w-full px-4 py-3 rounded-sm text-black'
+                required
+              />
+              <input
+                type='phone'
+                name='phone'
+                placeholder='Work Phone'
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    phone: formatPhoneNumber(e.target.value),
+                  })
+                }
+                className='w-full px-4 py-3 rounded-sm text-black'
+              />
+              <input
                 type='email'
                 name='email'
-                placeholder='Company Email'
+                placeholder='Work Email'
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })

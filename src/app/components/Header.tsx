@@ -22,13 +22,18 @@ export default function Header({ scrollToForm }: HeaderProps) {
       }`}
     >
       {/* Logo */}
-      <Image
-        src='/AiDit-logo-v1.jpg'
-        alt='AiDit Logo'
-        width={200}
-        height={70}
-        className='transition-all duration-300 ease-in-out lg:sticky-logo shrink-on-scroll'
-      />
+      <div className='flex flex-col items-end gap-1'>
+        <Image
+          src='/AiDit-logo-v1.jpg'
+          alt='AiDit Logo'
+          width={200}
+          height={70}
+          className='transition-all duration-300 ease-in-out lg:sticky-logo shrink-on-scroll'
+        />
+        <p className='text-lg italic text-white whitespace-nowrap pr-1'>
+          Audits Simplified!
+        </p>
+      </div>
 
       {/* Desktop Nav */}
       <div className='hidden md:flex items-center gap-6'>
