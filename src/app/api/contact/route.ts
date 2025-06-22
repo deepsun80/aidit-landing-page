@@ -22,9 +22,9 @@ export async function POST(req: NextRequest) {
 
     // Email content
     const mailOptions = {
-      from: `"Ai.Dit Contact Form" <${process.env.CONTACT_EMAIL}>`,
+      from: `"Ai.DIT Contact Form" <${process.env.CONTACT_EMAIL}>`,
       to: process.env.CONTACT_EMAIL, // send to yourself
-      subject: 'New Demo Request from Ai.Dit Landing Page',
+      subject: 'New Demo Request from Ai.DIT Landing Page',
       text: `Email: ${email}\nCompany: ${company}`,
       html: `
         <p><strong>Email:</strong> ${email}</p>

@@ -193,7 +193,7 @@ export default function HomePage() {
       <section className='bg-gray-800 px-6 lg:px-16 py-10 border-t border-b border-gray-500'>
         <div className='max-w-6xl mx-auto'>
           <h2 className='text-3xl font-bold text-white mb-6 text-center'>
-            How Ai.Dit Can Help Your Organization
+            How Ai.DIT Can Help Your Organization
           </h2>
           <div className='w-24 h-px bg-gray-300 mx-auto mb-6' />
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
@@ -210,7 +210,7 @@ export default function HomePage() {
                 icon: '/icon-1-dk-time.png',
                 title: 'Cut Audit Prep & Onboarding Time by Over 60%',
                 bullets: [
-                  'Ai.Dit surfaces relevant documentation instantly, speeding up audit prep and internal reviews.',
+                  'Ai.DIT surfaces relevant documentation instantly, speeding up audit prep and internal reviews.',
                   'New team members can self-serve SOPs and key data, reducing training time and ramp-up effort.',
                 ],
               },

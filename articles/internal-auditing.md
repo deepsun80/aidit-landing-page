@@ -55,4 +55,4 @@ Internal auditing is indispensable in the medical device industry, playing a vit
 
 This is where AI-driven tools can help considerably, whereby manufacturers can increase efficiency, surface nonconformities earlier, and reduce manual workload.
 
-> [Learn how Ai.Dit can optimize your internal auditing.](/#demo)
+> [Learn how Ai.DIT can optimize your internal auditing.](/#demo)
