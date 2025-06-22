@@ -24,8 +24,8 @@ export default function Header({ scrollToForm }: HeaderProps) {
       {/* Logo */}
       <div className='flex flex-col items-end gap-1'>
         <Image
-          src='/AiDIt-logo.jpg'
-          alt='AiDIt Logo'
+          src='/AiDIT-logo.jpg'
+          alt='AiDIT Logo'
           width={200}
           height={70}
           className='transition-all duration-300 ease-in-out lg:sticky-logo shrink-on-scroll'
