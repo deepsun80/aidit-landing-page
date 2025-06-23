@@ -10,7 +10,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Ai.DIT | AI Integrated Data Intelligence Tool',
+  title: 'Ai.DIT™ | AI Integrated Data Intelligence Tool',
   description: 'AI Integrated Data Intelligence Tool',
   keywords: [
     'AI Audit',

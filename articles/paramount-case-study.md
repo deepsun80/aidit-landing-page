@@ -1,11 +1,11 @@
 ---
-title: Ai.DIT turbo charges a medical device company's 21 CFR 820 compliance readiness
-summary: How a medical device company with limited resources is leveraging Ai.DIT to address Quality System gaps and updating their Quality system to meet FDA Quality Management System Requirements (QMSR), making the organization compliant to 21 CFR 820 regulation.
+title: Ai.DIT™ turbo charges a medical device company's 21 CFR 820 compliance readiness
+summary: How a medical device company with limited resources is leveraging Ai.DIT™ to address Quality System gaps and updating their Quality system to meet FDA Quality Management System Requirements (QMSR), making the organization compliant to 21 CFR 820 regulation.
 slug: paramount-case-study
 date: Jun 13, 2025
 ---
 
-**Case Study: How a medical device company with limited resources is leveraging Ai.DIT to address Quality System gaps and updating their Quality system to meet FDA Quality Management System Requirements (QMSR), making the organization compliant to 21 CFR 820 regulation.**
+**Case Study: How a medical device company with limited resources is leveraging Ai.DIT™ to address Quality System gaps and updating their Quality system to meet FDA Quality Management System Requirements (QMSR), making the organization compliant to 21 CFR 820 regulation.**
 
 **Background**
 
@@ -19,7 +19,7 @@ A leading medical device manufacturer Paramount Surgicals Inc. faced significant
 
 **AI-Driven Solutions**
 
-To address these challenges, Paramount Surgicals implemented Ai.DIT, our AI-driven software tool that leveraged Large Language Models (LLM) and advanced context retrieval technologies.
+To address these challenges, Paramount Surgicals implemented Ai.DIT™, our AI-driven software tool that leveraged Large Language Models (LLM) and advanced context retrieval technologies.
 
 1. **Automated Documentation and Record-Keeping**:
    - **AI-Powered Data Entry**: The AI system automated the data entry onto the output document, reducing human errors and ensuring consistency in documentation.
@@ -39,6 +39,6 @@ To address these challenges, Paramount Surgicals implemented Ai.DIT, our AI-driv
 
 **Conclusion**
 
-By leveraging Ai.DIT, Paramount Surgicals Inc.successfully addressed quality system gaps, ensured compliance with 21 CFR 820 regulations, and optimized resource utilization.
+By leveraging Ai.DIT™, Paramount Surgicals Inc.successfully addressed quality system gaps, ensured compliance with 21 CFR 820 regulations, and optimized resource utilization.
 
-> [Find out how Ai.DIT can quickly help your organization achieve compliance readiness.](/#demo)
+> [Find out how Ai.DIT™ can quickly help your organization achieve compliance readiness.](/#demo)

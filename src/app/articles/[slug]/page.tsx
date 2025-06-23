@@ -19,22 +19,22 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: 'Article Not Found | Ai.DIT',
+      title: 'Article Not Found | Ai.DIT™',
       description: 'Sorry, we could not find this article.',
     };
   }
 
   return {
-    title: `${article.title} | Ai.DIT`,
+    title: `${article.title} | Ai.DIT™`,
     description: article.summary,
     openGraph: {
-      title: `${article.title} | Ai.DIT`,
+      title: `${article.title} | Ai.DIT™`,
       description: article.summary,
       type: 'article',
     },
     twitter: {
       card: 'summary',
-      title: `${article.title} | Ai.DIT`,
+      title: `${article.title} | Ai.DIT™`,
       description: article.summary,
     },
   };

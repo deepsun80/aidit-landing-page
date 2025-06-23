@@ -61,7 +61,7 @@ Manufacturers must ensure that their AI-enabled medical devices comply with both
 
 Despite the challenges, the AI Act also presents opportunities for innovation. By adhering to high standards, manufacturers can enhance the reliability and trustworthiness of their AI systems, potentially gaining a competitive edge in the market.
 
-> [Discover how Ai.DIT can help your organization gain this edge.](/#demo)
+> [Discover how Ai.DIT™ can help your organization gain this edge.](/#demo)
 
 **References**
 
