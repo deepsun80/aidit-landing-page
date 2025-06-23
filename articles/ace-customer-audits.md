@@ -16,9 +16,9 @@ Customer audits are a critical aspect of maintaining and improving the quality o
 
 **2. Conduct Internal Audits**
 
-- **Regular Internal Audits**: Perform regular internal audits to identify and rectify potential issues before the customer audit. Using tools to perform internal audits including Ai based Ai.DIT™ can help perform Internal audits.
+- **Regular Internal Audits**: Perform regular internal audits to identify and rectify potential issues before the customer audit. Using tools to perform internal audits including A.I based Ai.DIT™ can help perform Internal audits.
 
-- **Mock Audits**: Conduct mock audits to simulate the customer audit process. This helps in identifying gaps and preparing your team for the actual audit. Using tools such as Ai based Ai.DIT™ can help perform Internal audits.
+- **Mock Audits**: Conduct mock audits to simulate the customer audit process. This helps in identifying gaps and preparing your team for the actual audit. Using tools such as A.I based Ai.DIT™ can help perform Internal audits.
 
 **3. Train Your Team**
 
