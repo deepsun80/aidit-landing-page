@@ -22,16 +22,16 @@ export default function Header({ scrollToForm }: HeaderProps) {
       }`}
     >
       {/* Logo */}
-      <div className='flex flex-col items-end gap-1'>
+      <div className='flex flex-col items-start gap-1'>
         <Image
           src='/AiDIT-logo.jpg'
           alt='Ai.DIT™ Logo'
-          width={200}
+          width={210}
           height={70}
           className='transition-all duration-300 ease-in-out lg:sticky-logo shrink-on-scroll'
         />
-        <p className='text-lg italic text-white whitespace-nowrap pr-1'>
-          Audits Simplified!
+        <p className='text-md italic text-white whitespace-nowrap pr-1'>
+          Business Process Simplified!
         </p>
       </div>
 
