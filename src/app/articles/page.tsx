@@ -9,7 +9,7 @@ export default async function ArticlesPage() {
   return (
     <>
       <Header />
-      <main className='bg-white min-h-screen text-gray-800 px-6 lg:px-16 pt-[180px] pb-20'>
+      <main className='min-h-screen text-gray-800 px-6 lg:px-16 pt-[230px] pb-20 bg-gray-200'>
         <div className='max-w-5xl mx-auto'>
           <h1 className='text-4xl font-bold mb-10 text-center'>
             Industry Insights & Articles
@@ -18,16 +18,16 @@ export default async function ArticlesPage() {
             {articles.map((article) => (
               <article
                 key={article.slug}
-                className='bg-gray-500 text-white p-6 rounded-lg shadow-md flex flex-col justify-between'
+                className='bg-white p-6 rounded-lg shadow-md flex flex-col justify-between'
               >
-                <p className='text-sm text-gray-200 mb-2'>
+                <p className='text-sm mb-2'>
                   {format(new Date(article.date), 'MMMM d, yyyy')}
                 </p>
                 <div>
                   <h2 className='text-2xl font-semibold mb-2'>
                     {article.title}
                   </h2>
-                  <p className='text-white mb-6'>{article.summary}</p>
+                  <p className='mb-6'>{article.summary}</p>
                 </div>
                 <a
                   href={`/articles/${article.slug}`}

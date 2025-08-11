@@ -44,28 +44,73 @@ export default function HomePage() {
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [index, setIndex] = useState(0);
 
-  const [qmsImageIndex, setQmsImageIndex] = useState(0);
-  const [erpImageIndex, setErpImageIndex] = useState(0);
+  const [activePlayer, setActivePlayer] = useState<0 | 1>(0);
+  const [playerClipIndex, setPlayerClipIndex] = useState<[number, number]>([
+    0, 1,
+  ]); // A shows 0, B preloads 1
 
-  const qmsImages = ['/screens/erp-1.jpg', '/screens/erp-2.jpg'];
-  const erpImages = ['/screens/erp-1.jpg', '/screens/erp-2.jpg'];
+  const videoRefs = [
+    useRef<HTMLVideoElement>(null),
+    useRef<HTMLVideoElement>(null),
+  ];
 
-  useEffect(() => {
-    const qmsInterval = setInterval(() => {
-      setQmsImageIndex((prev) => (prev + 1) % qmsImages.length);
-    }, 4000);
+  const SPEED = 2.5;
 
-    const erpInterval = setInterval(() => {
-      setErpImageIndex((prev) => (prev + 1) % erpImages.length);
-    }, 4000);
+  const clips = [
+    {
+      mp4: '/screens/sr-qms.mp4',
+      webm: '/screens/sr-qms.webm',
+      mov: '/screens/sr-qms.mov',
+      poster: '/screens/qms-1.jpg',
+    },
+    {
+      mp4: '/screens/sr-audit.mp4',
+      webm: '/screens/sr-audit.webm',
+      mov: '/screens/sr-audit.mov',
+      poster: '/screens/qms-2.jpg',
+    },
+    {
+      mp4: '/screens/sr-br.mp4',
+      webm: '/screens/sr-br.webm',
+      mov: '/screens/sr-br.mov',
+      poster: '/screens/qms-3.jpg',
+    },
+  ];
 
-    return () => {
-      clearInterval(qmsInterval);
-      clearInterval(erpInterval);
-    };
-  }, []);
+  const playNext = () => {
+    const nextPlayer = (activePlayer ^ 1) as 0 | 1;
+    const currentClip = playerClipIndex[activePlayer];
+    const nextClip = (currentClip + 1) % clips.length;
+
+    // 1) point the hidden player to the next clip
+    setPlayerClipIndex((prev) => {
+      const u = [...prev] as [number, number];
+      u[nextPlayer] = nextClip;
+      return u;
+    });
+
+    // 2) after DOM updates, load & play the hidden player, then crossfade
+    requestAnimationFrame(() => {
+      const nextRef = videoRefs[nextPlayer].current;
+      if (!nextRef) return;
+
+      nextRef.playbackRate = SPEED;
+      nextRef.load();
+
+      const onCanPlay = () => {
+        nextRef.removeEventListener('canplay', onCanPlay);
+        nextRef.play().catch(() => {});
+        setActivePlayer(nextPlayer); // crossfade handled by motion opacity
+      };
+      nextRef.addEventListener('canplay', onCanPlay);
+    });
+  };
+
+  // When the visible clip ends, prepare & crossfade to the next
+  const handleEnded = () => {
+    playNext();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -111,166 +156,144 @@ export default function HomePage() {
     return result;
   };
 
+  useEffect(() => {
+    videoRefs.forEach((v) => {
+      if (v.current) v.current.playbackRate = SPEED;
+    });
+  }, []);
+
   return (
     <div className='min-h-screen flex flex-col text-white bg-gray-800'>
       <Header scrollToForm={scrollToForm} />
 
-      {/* Unified Top Section with Background */}
-      <section className='relative overflow-hidden py-32 px-6 lg:px-16'>
-        {/* Background layers */}
+      {/* Top Section */}
+      <section className='pt-64 flex flex-col lg:flex-row px-6 lg:px-16 py-48 gap-6 lg:gap-[10rem] items-center justify-center relative overflow-hidden'>
         <div
-          className='absolute inset-0 z-0 bg-cover bg-no-repeat bg-center filter blur-[2px] scale-1'
+          className='absolute inset-0 z-0 bg-cover bg-no-repeat bg-center filter blur-[2px] scale-100'
           style={{
+            // backgroundImage: "url('/aidit-bg.png')",
+            // backgroundImage: "url('/tech-pattern.jpg')",
             backgroundImage: "url('/ai-bg.jpg')",
-            // backgroundPosition: 'top center',
+            backgroundPosition: 'top center',
           }}
         />
+
         <div className='absolute inset-0 bg-blue-900 bg-opacity-80 z-0' />
 
-        {/* Content container */}
-        <div className='relative z-10 flex flex-col gap-24 max-w-7xl mx-auto'>
-          {/* Header */}
-          <div className='text-center max-w-3xl mx-auto'>
-            <h1 className='text-3xl font-extrabold mb-6 leading-tight text-white'>
-              AI Integrated Data Intelligence Tool
-            </h1>
-            <div className='w-24 h-px bg-gray-300 mb-6 mx-auto' />
-            <p className='text-lg font-semibold leading-tight text-gray-200'>
-              An AI-driven platform for automating Business & Quality System
-              management — from audits to operations — with built-in compliance
-              intelligence & data privacy at its core.
-            </p>
-          </div>
+        {/* Content */}
+        <div className='relative z-10 max-w-2xl'>
+          <h1 className='text-3xl font-extrabold mb-6 leading-tight'>
+            AI Integrated Data Intelligence Tool
+          </h1>
+          <div className='w-24 h-px bg-gray-300 mb-6' />
+          <p className='text-lg font-semibold mb-6 leading-tight text-gray-200'>
+            An AI-driven platform for automating Business & Quality System
+            management — from audits to operations — with built-in compliance
+            intelligence & data privacy at its core.
+          </p>
+          <ul className='space-y-5 text-lg'>
+            {[
+              {
+                title: 'Automate & Instantly Answer Audits',
+                description:
+                  'Rapidly locate relevant documentation, auto-generate compliant responses, and surface potential nonconformities before they become findings.',
+              },
+              {
+                title: 'Streamline Supplier & Internal Audit Programs',
+                description:
+                  'Generate tailored questions, track findings, and close out actions with AI-driven accuracy and consistency.',
+              },
+              {
+                title: 'Automate Quality System Workflows',
+                description:
+                  'Digitize and streamline core processes like Design Control, Process & Production Control, and CAPA for improved traceability and efficiency.',
+              },
+              {
+                title: 'Continuous Compliance Monitoring & Analytics',
+                description:
+                  'Gain organization-wide visibility into quality system health, risk trends, and audit readiness through real-time dashboards.',
+              },
+            ].map((item, idx) => (
+              <li key={idx} className='flex items-start gap-3'>
+                <CheckIcon className='w-10 h-10 text-white' />
+                <div>
+                  <p className='font-semibold text-white leading-snug'>
+                    {item.title}
+                  </p>
+                  <p className='text-sm text-gray-300 leading-snug'>
+                    {item.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* QMS Checklist */}
-          <div className='flex flex-col lg:flex-row gap-10'>
-            {/* Checklist Left */}
-            <div className='max-w-2xl'>
-              <ul className='space-y-5 text-lg'>
-                {[
-                  {
-                    title: 'Answer Customer and Agency Audits Instantly',
-                    description:
-                      'Quickly locate relevant documentation and generate compliant responses.',
-                  },
-                  {
-                    title: 'Identify Nonconformities in Real Time',
-                    description:
-                      'Surface gaps and issues across your Quality System before they become audit findings.',
-                  },
-                  {
-                    title: 'Automate Supplier & Internal Audits',
-                    description:
-                      'Generate tailored audit questions based on quality system requirements and standards.',
-                  },
-                  {
-                    title: 'Monitor Risk Through Continuous Analytics',
-                    description:
-                      'Gain organization-wide insight into quality system health and audit readiness.',
-                  },
-                ].map((item, idx) => (
-                  <li key={idx} className='flex items-start gap-3'>
-                    <CheckIcon className='w-10 h-10 text-white' />
-                    <div>
-                      <p className='font-semibold text-white leading-snug'>
-                        {item.title}
-                      </p>
-                      <p className='text-sm text-gray-300 leading-snug'>
-                        {item.description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* Rotating Clips (double-buffered) */}
+        <div className='w-full lg:w-1/2 aspect-[3584/1946] relative overflow-hidden rounded-md shadow-md bg-gray-200'>
+          {/* Player A */}
+          <motion.div
+            className='absolute inset-0'
+            animate={{ opacity: activePlayer === 0 ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
+          >
+            <video
+              ref={videoRefs[0]}
+              className='absolute inset-0 w-full h-full object-cover'
+              autoPlay
+              muted
+              playsInline
+              preload='auto'
+              onEnded={playNext}
+              controls={false}
+            >
+              {clips[playerClipIndex[0]].webm && (
+                <source
+                  src={clips[playerClipIndex[0]].webm}
+                  type='video/webm'
+                />
+              )}
+              <source src={clips[playerClipIndex[0]].mp4} type='video/mp4' />
+              {clips[playerClipIndex[0]].mov && (
+                <source
+                  src={clips[playerClipIndex[0]].mov}
+                  type='video/quicktime'
+                />
+              )}
+            </video>
+          </motion.div>
 
-            {/* Rotating Image Right */}
-            <div className='w-full lg:w-1/2 aspect-[16/9] relative'>
-              <AnimatePresence mode='wait'>
-                <motion.div
-                  key={qmsImageIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: 'easeInOut' }}
-                  className='absolute inset-0'
-                >
-                  <Image
-                    src={qmsImages[qmsImageIndex]}
-                    alt={`QMS Screenshot ${qmsImageIndex + 1}`}
-                    layout='fill'
-                    className='rounded-md shadow-md'
-                    sizes='(min-width: 1024px) 50vw, 100vw'
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
-          {/* ERP Checklist */}
-          <div className='flex flex-col-reverse lg:flex-row gap-10 '>
-            {/* Rotating Image Left */}
-            <div className='w-full lg:w-1/2 aspect-[16/9] relative'>
-              <AnimatePresence mode='wait'>
-                <motion.div
-                  key={erpImageIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: 'easeInOut' }}
-                  className='absolute inset-0'
-                >
-                  <Image
-                    src={erpImages[erpImageIndex]}
-                    alt={`ERP Screenshot ${erpImageIndex + 1}`}
-                    layout='fill'
-                    className='rounded-md shadow-md'
-                    sizes='(min-width: 1024px) 50vw, 100vw'
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Checklist Right */}
-            <div className='max-w-2xl'>
-              <ul className='space-y-5 text-lg'>
-                {[
-                  {
-                    title: 'Automate Quote Generation for New Orders',
-                    description:
-                      'Generate accurate, professional quotes based on RFQs, pricing sheets, and past records.',
-                  },
-                  {
-                    title: 'Streamline Production and Batch Records',
-                    description:
-                      'Trigger production workflows and generate electronic batch records with traceability.',
-                  },
-                  {
-                    title: 'Reduce Manual Work in Daily Operations',
-                    description:
-                      'Integrate AI into key processes like purchase orders, job travelers, and work instructions.',
-                  },
-                  {
-                    title: 'Accelerate Onboarding and Process Adoption',
-                    description:
-                      'Empower teams with guided SOPs, smart forms, and embedded compliance logic.',
-                  },
-                ].map((item, idx) => (
-                  <li key={idx} className='flex items-start gap-3'>
-                    <CheckIcon className='w-10 h-10 text-white' />
-                    <div>
-                      <p className='font-semibold text-white leading-snug'>
-                        {item.title}
-                      </p>
-                      <p className='text-sm text-gray-300 leading-snug'>
-                        {item.description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {/* Player B */}
+          <motion.div
+            className='absolute inset-0'
+            animate={{ opacity: activePlayer === 1 ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
+          >
+            <video
+              ref={videoRefs[1]}
+              className='absolute inset-0 w-full h-full object-cover'
+              autoPlay={false}
+              muted
+              playsInline
+              preload='auto'
+              onEnded={playNext}
+              controls={false}
+            >
+              {clips[playerClipIndex[1]].webm && (
+                <source
+                  src={clips[playerClipIndex[1]].webm}
+                  type='video/webm'
+                />
+              )}
+              <source src={clips[playerClipIndex[1]].mp4} type='video/mp4' />
+              {clips[playerClipIndex[1]].mov && (
+                <source
+                  src={clips[playerClipIndex[1]].mov}
+                  type='video/quicktime'
+                />
+              )}
+            </video>
+          </motion.div>
         </div>
       </section>
 
@@ -287,13 +310,13 @@ export default function HomePage() {
                 icon: '/icon-1-dk-resources.png',
                 title: "Reclaim Up to 30% of Your Team's Resources",
                 bullets: [
-                  'Free up staff by automating audit prep and document review.',
+                  'Free up staff by automating compliance prep and document review.',
                   'Focus your team on high-risk areas instead of repetitive compliance tasks.',
                 ],
               },
               {
                 icon: '/icon-1-dk-time.png',
-                title: 'Cut Audit Prep & Onboarding Time by Over 60%',
+                title: 'Cut Audit, Process & Onboarding Time by Over 60%',
                 bullets: [
                   'Ai.DIT™ surfaces relevant documentation instantly, speeding up audit prep and internal reviews.',
                   'New team members can self-serve SOPs and key data, reducing training time and ramp-up effort.',
