@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 
 // Load Roboto font
@@ -49,7 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={roboto.variable}>
-      <body>{children}</body>
+      <body>
+        {children} <Analytics />
+      </body>
     </html>
   );
 }
