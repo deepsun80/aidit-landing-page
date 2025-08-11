@@ -6,7 +6,11 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { CheckIcon } from '@radix-ui/react-icons';
+import {
+  CheckIcon,
+  LockClosedIcon,
+  CheckCircledIcon,
+} from '@radix-ui/react-icons';
 
 export default function HomePage() {
   useEffect(() => {
@@ -300,7 +304,7 @@ export default function HomePage() {
       {/* Value Props Section */}
       <section className='bg-gray-200 px-6 lg:px-16 py-10 border-t border-b'>
         <div className='max-w-6xl mx-auto'>
-          <h2 className='text-3xl font-bold text-gray-700 mb-6 text-center'>
+          <h2 className='text-3xl font-bold text-gray-800 mb-6 text-center'>
             How Ai.DIT™ Can Help Your Organization
           </h2>
           <div className='w-24 h-px bg-gray-500 mx-auto mb-6' />
@@ -447,6 +451,38 @@ export default function HomePage() {
                 </li>
               </ol>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Data Security */}
+      <section className='bg-gray-300 px-6 lg:px-16 py-16'>
+        <div className='max-w-6xl mx-auto text-center'>
+          <h2 className='flex items-center justify-center gap-3 text-3xl font-bold text-gray-800 mb-8'>
+            <LockClosedIcon className='w-8 h-8 text-gray-600' />
+            Trust &amp; Data Security
+          </h2>
+
+          <div className='w-24 h-px bg-gray-500 mx-auto mb-6' />
+
+          <p className='text-gray-700 max-w-3xl mx-auto mb-10'>
+            We build on providers that maintain industry-recognized security
+            controls, ensuring your business and quality system data stays
+            protected.
+          </p>
+
+          <div className='grid grid-cols-1 md:grid-cols-4 gap-6 text-left'>
+            {[
+              'SOC 2 Type II (Provider Level)',
+              'Encryption In Transit & At Rest',
+              'Zero Data Retention Options',
+              'HIPAA-Ready Configurations',
+            ].map((item, idx) => (
+              <div key={idx} className='flex items-center justify-center gap-3'>
+                <CheckCircledIcon className='w-6 h-6 text-green-600 flex-shrink-0 mt-0.5' />
+                <span className='text-gray-800 font-medium'>{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
