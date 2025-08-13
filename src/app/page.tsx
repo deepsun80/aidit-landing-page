@@ -186,36 +186,36 @@ export default function HomePage() {
 
         {/* Content */}
         <div className='relative z-10 max-w-2xl'>
-          <h1 className='text-3xl font-extrabold mb-6 leading-tight'>
+          <h1 className='text-2xl font-extrabold mb-4 leading-tight'>
             AI Integrated Data Intelligence Tool
           </h1>
-          <div className='w-24 h-px bg-gray-300 mb-6' />
+          <div className='w-24 h-px bg-gray-300 mb-4' />
           <p className='text-lg font-semibold mb-6 leading-tight text-gray-200'>
-            An AI-driven platform for automating Business & Quality System
-            management — from audits to operations — with built-in compliance
-            intelligence & data privacy at its core.
+            AI-driven workflow layer that connects to your existing systems to
+            automate Business and Quality System oversight — without the cost or
+            disruption of replacing current tools, and with full data privacy.
           </p>
           <ul className='space-y-5 text-lg'>
             {[
               {
-                title: 'Automate & Instantly Answer Audits',
+                title: 'Accelerate Audit Readiness',
                 description:
                   'Rapidly locate relevant documentation, auto-generate compliant responses, and surface potential nonconformities before they become findings.',
               },
               {
-                title: 'Streamline Supplier & Internal Audit Programs',
+                title: 'Streamline Supplier & Internal Audits',
                 description:
-                  'Generate tailored questions, track findings, and close out actions with AI-driven accuracy and consistency.',
+                  'Connect and track all programs in one place, generate tailored audit questions, and close out actions with AI-driven accuracy and consistency.',
               },
               {
-                title: 'Automate Quality System Workflows',
+                title: 'Automate & Monitor Key Workflows',
                 description:
-                  'Digitize and streamline core processes like Design Control, Process & Production Control, and CAPA for improved traceability and efficiency.',
+                  'Link and streamline processes like Design Control, Production Control, and CAPA across your existing tools for better traceability and efficiency.',
               },
               {
                 title: 'Continuous Compliance Monitoring & Analytics',
                 description:
-                  'Gain organization-wide visibility into quality system health, risk trends, and audit readiness through real-time dashboards.',
+                  'Gain organization-wide visibility into quality and operational performance through live dashboards, analytics, and proactive alerts.',
               },
             ].map((item, idx) => (
               <li key={idx} className='flex items-start gap-3'>
@@ -304,7 +304,7 @@ export default function HomePage() {
       {/* Value Props Section */}
       <section className='bg-gray-200 px-6 lg:px-16 py-10 border-t border-b'>
         <div className='max-w-6xl mx-auto'>
-          <h2 className='text-3xl font-bold text-gray-800 mb-6 text-center'>
+          <h2 className='text-2xl font-bold text-gray-800 mb-6 text-center'>
             How Ai.DIT™ Can Help Your Organization
           </h2>
           <div className='w-24 h-px bg-gray-500 mx-auto mb-6' />
